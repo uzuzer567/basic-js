@@ -14,8 +14,13 @@ const chainMaker = {
   },
   
   addLink(value) {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    if(this.reversed) {
+      this.chain.unshift(value);
+    }
+    else {
+      this.chain.push(value);
+    }
+    return this;
   },
   
   removeLink(position) {
