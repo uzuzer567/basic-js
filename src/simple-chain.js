@@ -45,13 +45,25 @@ const chainMaker = {
   },
   
   reverseChain() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    this.reversed = !this.reversed;
+    return this;
   },
   
   finishChain() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    if(this.reversed) {
+		this.chain.reverse();
+	}
+	let finalChain = "";
+	for(var i = 0; i < this.chain.length; i++) {
+		if(i == 0) {
+			finalChain += "( " + this.chain[i] + " )";
+		}
+		else {
+			finalChain += "~~( " + this.chain[i] + " )";
+		}
+	}
+	this.setChain();
+    return finalChain;
   }
 };
 
