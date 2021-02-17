@@ -4,8 +4,7 @@ const chainMaker = {
   chain: [], 
   reversed: false,
   getLength() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    return this.chain.length;
   },
   
   setChain() {
@@ -24,8 +23,25 @@ const chainMaker = {
   },
   
   removeLink(position) {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    if (!Number.isInteger(position)) {
+        throw new Error();
+    }
+	
+    position--;
+    if (position < 0 || position > this.chain.length) {
+      this.setChain();
+      throw new Error();
+    }
+
+    if(this.reversed) {
+      this.setChain();
+      this.chain.splice(this.chain.length - position - 1, 1);
+    }
+    else {
+      this.chain.splice(position, 1);
+    }
+
+    return this;
   },
   
   reverseChain() {
