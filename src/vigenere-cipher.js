@@ -4,11 +4,16 @@ let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
 let table = [];
 
 class VigenereCipheringMachine {
-  constructor (crypt) {
-	this.crypt = crypt === false ? false : true;
+  constructor(crypt) {
+	  if(crypt == undefined) {
+		this.crypt = true;
+	  }
+	  else {
+		 this.crypt = crypt; 
+	  }
   }
   encrypt(message, key) {
-  	  if (message == undefined || key == undefined) {
+	  if (message == undefined || key == undefined) {
 		  throw new Error();
 	  }
 	  
