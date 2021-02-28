@@ -7,7 +7,7 @@ class VigenereCipheringMachine {
   constructor (crypt) {
 	this.crypt = crypt === false ? false : true;
   }
-  encrypt() {
+  encrypt(message, key) {
   	  if (message == undefined || key == undefined) {
 		  throw new Error();
 	  }
@@ -57,7 +57,7 @@ class VigenereCipheringMachine {
 	      return answer.reverse().join('');
 	  }
   }    
-  decrypt() {
+  decrypt(string, key) {
 	  if (string == undefined || key == undefined) {
 		  throw new Error();
 	  }
