@@ -1,5 +1,8 @@
 const CustomError = require("../extensions/custom-error");
 
+let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+let table = [];
+
 class VigenereCipheringMachine {
   constructor (crypt) {
 	this.crypt = crypt === false ? false : true;
