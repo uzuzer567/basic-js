@@ -55,8 +55,57 @@ class VigenereCipheringMachine {
 	  }
   }    
   decrypt() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+	  if (string == undefined || key == undefined) {
+		  throw new Error();
+	  }
+	  
+	  this.getTable();
+	  	 
+	  let answer = [];
+	  let stringArray = string.toString().toUpperCase().split('');
+	  let keyArray = key.toString().toUpperCase();
+	  
+	  while(string.length > keyArray.length) {
+		keyArray += key.toUpperCase();
+	  }
+	  
+	  keyArray = keyArray.split('');
+
+	  let column = [];
+	  let row = [];
+	  	  
+	  for (let i = 0; i < stringArray.length; i++) {
+		  row.push(alphabet.indexOf(keyArray[i]));
+	  }
+	  
+	  let notLetterCounter = 0;
+	  	  
+	  for (let i = 0; i < stringArray.length; i++) {
+		  for (let j = 0; j < alphabet.length; j++) {
+			  if(stringArray[i] >= "A" && stringArray[i] <= "Z" && notLetterCounter === 0) {
+				  if(table[j][row[i]] === stringArray[i]) {
+					answer.push(alphabet[j]);
+				  }
+			  }
+			  else if(stringArray[i] >= "A" && stringArray[i] <= "Z" && notLetterCounter !== 0) {
+				  if(table[j][row[i - notLetterCounter]] === stringArray[i]) {
+					answer.push(alphabet[j]);
+				  }
+			  }
+			  else {
+				  answer.push(stringArray[i]);
+				  notLetterCounter++;
+				  break;
+			  }
+		  }
+	  }
+	  	  	  	  
+	  if(this.crypt) {
+		  return answer.join('');
+	  }
+	  else {
+	      return answer.reverse().join('');
+	  }
   }
   getTable() {
 	  for (let i = 0; i < alphabet.length; i++) {
